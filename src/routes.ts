@@ -1,16 +1,20 @@
-import { AuthenticateClientController } from "./modules/accounts/authenticateClient/AuthenticateClientController";
 import { Router } from "express";
-import { CreateClienteController } from "./modules/client/useCase/createClient/CreateClienteController";
-import { AuthenticateDeliverymanController } from "modules/accounts/authenticateDeliveryman/AuthenticateDeliverymanController";
+import { AuthenticateClientController } from "./modules/accounts/authenticateClient/AuthenticateClientController";
+import { AuthenticateDeliverymanController } from "./modules/accounts/authenticateDeliveryman/AuthenticateDeliverymanController";
+import { CreateClientController } from "./modules/client/useCase/createClient/CreateClientController";
+import { CreateDeliveryController } from "./modules/deliveries/useCases/CreateDeliveryController";
+import { CreateDeliverymanController } from "./modules/deliveryman/useCases/createDeleriveryman/CreateDeliverymanController";
 
 const routes = Router();
 
-const createClienteController = new CreateClienteController();
-const createDeliverymanUseCase = new CreateClienteController();
+const createClientController = new CreateClientController();
+const createDeliverymanController = new CreateDeliverymanController();
 
 const authenticateClientController = new AuthenticateClientController();
 const authenticateDeliverymanController =
   new AuthenticateDeliverymanController();
+
+const deliveryController = new CreateDeliveryController();
 
 routes.post("/client/authenticate", authenticateClientController.handle);
 routes.post(
@@ -18,7 +22,9 @@ routes.post(
   authenticateDeliverymanController.handle
 );
 
-routes.post("/deliveryman/", createDeliverymanUseCase.handle);
-routes.post("/client/", createClienteController.handle);
+routes.post("/deliveryman/", createDeliverymanController.handle);
+routes.post("/client/", createClientController.handle);
+
+routes.post("/delivery", deliveryController.handle);
 
 export { routes };
