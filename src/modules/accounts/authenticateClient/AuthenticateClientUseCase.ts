@@ -1,6 +1,6 @@
-import { prisma } from "../../../database/prismaClient";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
+import { prisma } from "../../../database/prismaClient";
 interface IAuthenticateClient {
   username: string;
   password: string;
@@ -21,9 +21,10 @@ export class AuthenticateClientUseCase {
     if (!passwordMatch) {
       throw new Error("Username or Password invalid");
     }
-    const token = sign({username}, "76f95b8681533bf0c4223a7450d3ad4a", {
-        subject: client.id,
-        expiresIn: "1d"
-    })
+    const token = sign({ username }, "76f95b8681533bf0c4223a7450d3ad4a", {
+      subject: client.id,
+      expiresIn: "1d",
+    });
+    return token;
   }
 }

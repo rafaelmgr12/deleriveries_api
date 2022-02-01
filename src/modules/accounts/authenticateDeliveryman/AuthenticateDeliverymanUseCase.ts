@@ -14,7 +14,7 @@ export class AuthenticateDeliverymanUseCase {
         username,
       },
     });
- 
+
     if (!deliveryman) {
       throw new Error("Username of password invalid");
     }
@@ -27,5 +27,6 @@ export class AuthenticateDeliverymanUseCase {
       subject: deliveryman.id,
       expiresIn: "1d",
     });
+    return token;
   }
 }
