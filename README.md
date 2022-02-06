@@ -11,6 +11,7 @@
 </p>
 
 ## ⚙ O que é
+
 Deliveries API é uma aplicação backend feita com Nodejs, utilizando o Prisma IO, para realizar entregas. Nesta aplicação, teremos de um lado o cliente - que irá se cadastrar e cadastrar itens para serem entregues em determinada localização - e, do outro, o entregador - que poderá pegar ou não determinada entrega para ser realizada. Iremos utilizar Typescript, JWT e Express.
 
 ## ✨ Tecnologias
